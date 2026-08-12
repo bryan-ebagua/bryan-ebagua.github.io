@@ -5,43 +5,206 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bryan Ebagua | Portfolio</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; }
-        header { text-align: center; padding: 40px 0; border-bottom: 2px solid #eee; }
-        h1 { margin: 0; font-size: 2.5em; }
-        .interests { font-style: italic; color: #666; margin-top: 10px; }
-        section { margin: 30px 0; }
-        .project { margin-bottom: 25px; padding: 15px; background: #f9f9f9; border-left: 4px solid #0056b3; }
-        .project h3 { margin-top: 0; }
-        a { color: #0056b3; text-decoration: none; }
-        a:hover { text-decoration: underline; }
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #111;
+            margin: 0;
+            padding: 0;
+            background-color: #fafafa;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #fafafa;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            border: 3px solid #111;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #111;
+            font-weight: bold;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        /* The cool underline effect from Zachary's site */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 6px;
+            bottom: 2px;
+            left: 0;
+            background-color: #79dca6; /* Mint green accent */
+            z-index: -1;
+            border-radius: 2px;
+        }
+
+        .contact-btn {
+            border: 3px solid #111;
+            padding: 10px 20px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #111;
+            border-radius: 5px;
+            background-color: #fff;
+            transition: background-color 0.2s;
+        }
+        
+        .contact-btn:hover {
+            background-color: #eee;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .profile-pic {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 5px solid #111;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #444;
+        }
+
+        /* Projects Section */
+        .projects-header {
+            background-color: #79dca6;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 3px solid #111;
+            border-bottom: 3px solid #111;
+        }
+
+        .projects-header h2 {
+            margin: 0;
+            font-size: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Project Cards */
+        .card {
+            background-color: #fff;
+            border: 3px solid #111;
+            border-radius: 8px;
+            padding: 30px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #111;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 5px 5px 0px #111;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin: 10px 0;
+            font-size: 1.4rem;
+        }
+
+        .card p {
+            margin: 0;
+            font-weight: 500;
+            color: #555;
+        }
     </style>
 </head>
 <body>
-    <header>
+
+    <nav>
+        <div class="logo">BE</div>
+        <div class="nav-links">
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#lab-notes">Lab Notes</a>
+        </div>
+        <a href="mailto:bryanebagua@gmail.com" class="contact-btn">Contact Me</a>
+    </nav>
+
+    <header class="hero">
+        <img src="your-image.jpg" alt="Bryan Ebagua" class="profile-pic">
         <h1>Bryan Ebagua</h1>
-        <p>Computer Systems Engineering Student</p>
-        <p class="interests">Areas of Interest: Network Engineering • System Administration • Infrastructure Security • Cloud Computing</p>
+        <p>Computer Systems Engineering Student at UGA</p>
     </header>
 
-    <section id="projects">
-        <h2>Featured Projects</h2>
+    <div class="projects-header" id="projects">
+        <h2>I love engineering networks and systems! You can view some of my favorite technical projects below.</h2>
+    </div>
+
+    <section class="projects-grid">
         
-        <div class="project">
-            <h3>Hybrid Active Directory and Linux Server Home Lab</h3>
-            <p>Engineered a multi-tier hybrid network environment utilizing VMware Workstation, bridging a public NAT network with an isolated LAN segment. Deployed a Windows Server Domain Controller and managed a full LAMP stack to host internal web applications.</p>
-            <a href="https://github.com/bryan-ebagua/ad-homelab" target="_blank">View on GitHub</a>
-        </div>
+        <a href="https://github.com/bryan-ebagua/ad-homelab" class="card" target="_blank">
+            <div class="card-icon">🖥️</div>
+            <h3>Hybrid AD Home Lab</h3>
+            <p>Engineered a multi-tier hybrid network environment.</p>
+        </a>
 
-        <div class="project">
-            <h3>Interactive SSH Honeypot</h3>
-            <p>Architected an interactive SSH honeypot in Python using paramiko to simulate a vulnerable Linux server and capture automated brute-force attacks.</p>
-            <a href="https://github.com/bryan-ebagua/SSH-Honeypot" target="_blank">View on GitHub</a>
-        </div>
+        <a href="https://github.com/bryan-ebagua/SSH-Honeypot" class="card" target="_blank">
+            <div class="card-icon">🪤</div>
+            <h3>SSH Honeypot</h3>
+            <p>Architected an interactive SSH honeypot in Python.</p>
+        </a>
+
+        <a href="https://github.com/bryan-ebagua/File-Integrity-Checker" class="card" target="_blank">
+            <div class="card-icon">🔐</div>
+            <h3>File Integrity Checker</h3>
+            <p>Engineered a memory-safe hashing engine using SHA-256.</p>
+        </a>
+
+        <a href="https://github.com/bryan-ebagua/Networking-Labs" class="card" target="_blank">
+            <div class="card-icon">🌐</div>
+            <h3>Cisco Packet Tracer</h3>
+            <p>Designed and simulated end-to-end network topologies.</p>
+        </a>
+
     </section>
 
-    <section id="contact">
-        <h2>Connect</h2>
-        <p>Email: <a href="mailto:bryanebagua@gmail.com">bryanebagua@gmail.com</a> | LinkedIn: <a href="https://linkedin.com/in/bryan-ebagua-57a95022b">Bryan Ebagua</a></p>
-    </section>
 </body>
 </html>
