@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bryan Ebagua | Projects</title>
+    <style>
+        /* Shared Global Styles */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #0B132B; margin: 0; padding: 0; background-color: #FFFFFF; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; }
+        .logo { font-weight: 900; font-size: 1.5rem; border: 3px solid #0B132B; padding: 5px 10px; border-radius: 5px; color: #0B132B; text-decoration: none;}
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { text-decoration: none; color: #0B132B; font-weight: bold; font-size: 1.1rem; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; width: 100%; height: 6px; bottom: 2px; left: 0; background-color: #5BC0BE; z-index: -1; border-radius: 2px; }
+        
+        /* Page Specific Styles */
+        .page-header { background-color: #5BC0BE; padding: 40px 20px; text-align: center; border-top: 3px solid #0B132B; border-bottom: 3px solid #0B132B; margin-bottom: 40px;}
+        .page-header h1 { margin: 0; font-size: 2.5rem; color: #0B132B; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; display: flex; flex-direction: column; gap: 40px; margin-bottom: 60px;}
+        .project-block { border: 3px solid #0B132B; border-radius: 8px; padding: 30px; box-shadow: 5px 5px 0px #0B132B; }
+        .project-title { margin-top: 0; font-size: 1.8rem; display: flex; justify-content: space-between; align-items: center;}
+        .github-link { font-size: 1rem; background-color: #1C2541; color: white; padding: 8px 16px; border-radius: 5px; text-decoration: none; font-weight: bold; }
+        .github-link:hover { background-color: #3A506B; }
+        .project-details { color: #3A506B; line-height: 1.6; font-size: 1.1rem;}
+        .project-details li { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">BE</a>
+        <div class="nav-links">
+            <a href="projects.html">Projects</a>
+            <a href="experience.html">Experience</a>
+            <a href="lab-notes.html">Lab Notes</a>
+            <a href="index.html">Home</a>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Technical Projects</h1>
+    </div>
+
+    <div class="container">
+        <div class="project-block">
+            <h2 class="project-title">
+                Hybrid Active Directory and Linux Server Home Lab
+                <a href="https://github.com/bryan-ebagua/ad-homelab" class="github-link" target="_blank">GitHub Repo</a>
+            </h2>
+            <ul class="project-details">
+                <li>Engineered a multi-tier hybrid network environment utilizing VMware Workstation, bridging a public NAT network with an isolated, private LAN segment.</li>
+                <li>Deployed and administered a Windows Server Domain Controller, configuring DNS and Active Directory Domain Services to simulate an enterprise network.</li>
+                <li>Built and managed a full LAMP stack (Linux, Apache, MariaDB, PHP) to host and secure internal web applications.</li>
+                <li>Integrated third-party applications with Active Directory using LDAP, enabling centralized Single Sign-On (SSO) authentication.</li>
+                <li>Troubleshot advanced web application failures, utilizing SSH to query MySQL databases and analyze Apache system logs.</li>
+            </ul>
+        </div>
+
+        <div class="project-block">
+            <h2 class="project-title">
+                SSH Honeypot
+                <a href="https://github.com/bryan-ebagua/SSH-Honeypot" class="github-link" target="_blank">GitHub Repo</a>
+            </h2>
+            <ul class="project-details">
+                <li>Architected an interactive SSH honeypot in Python using paramiko and low-level socket wrappers to simulate a vulnerable Linux server and capture automated brute-force attacks.</li>
+                <li>Engineered custom SSH protocol logic by subclassing paramiko.ServerInterface to bypass standard authentication, emulate pseudo-terminals (PTY), and capture raw keystrokes.</li>
+                <li>Mitigated Denial of Service (DoS) risks by refactoring the connection listener with ThreadPoolExecutor to bound thread pools and designing a rolling-window IP rate limiter.</li>
+            </ul>
+        </div>
+        
+        </div>
+</body>
+</html>
