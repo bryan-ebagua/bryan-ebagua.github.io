@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bryan Ebagua | Lab Notes</title>
+    <style>
+        /* Shared Global Styles */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #0B132B; margin: 0; padding: 0; background-color: #FFFFFF; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; }
+        .logo { font-weight: 900; font-size: 1.5rem; border: 3px solid #0B132B; padding: 5px 10px; border-radius: 5px; color: #0B132B; text-decoration: none;}
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { text-decoration: none; color: #0B132B; font-weight: bold; font-size: 1.1rem; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; width: 100%; height: 6px; bottom: 2px; left: 0; background-color: #5BC0BE; z-index: -1; border-radius: 2px; }
+        
+        /* Page Specific Styles */
+        .page-header { background-color: #5BC0BE; padding: 40px 20px; text-align: center; border-top: 3px solid #0B132B; border-bottom: 3px solid #0B132B; margin-bottom: 40px;}
+        .page-header h1 { margin: 0; font-size: 2.5rem; color: #0B132B; }
+
+        .blog-container { max-width: 800px; margin: 0 auto; padding: 0 20px 60px 20px; }
+        .blog-post { font-size: 1.15rem; line-height: 1.8; color: #3A506B; }
+        .blog-post h2 { color: #0B132B; border-bottom: 2px solid #5BC0BE; padding-bottom: 10px; margin-top: 40px;}
+        .code-snippet { background-color: #f4f4f4; border: 2px solid #1C2541; padding: 10px; border-radius: 5px; font-family: monospace; display: block; margin: 15px 0;}
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">BE</a>
+        <div class="nav-links">
+            <a href="projects.html">Projects</a>
+            <a href="experience.html">Experience</a>
+            <a href="lab-notes.html">Lab Notes</a>
+            <a href="index.html">Home</a>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Lab Documentation</h1>
+    </div>
+
+    <div class="blog-container">
+        <div class="blog-post">
+            <h2>Building an Isolated Active Directory Environment</h2>
+            <p>The first step was setting up an isolated private network. This is done to prevent the DHCP Server from assigning IP addresses to my phone, printer, or other devices on my home Wi-Fi. I created a virtual machine in VMware, set max disk size to 60 GB, then went to hardware, network adapter, and created a LAN segment named AD-Lab.</p>
+            
+            <p>I set up a static IP address so clients could find the server. Because this server was going to become the Domain Controller, it will also act as the primary DNS server for the whole lab (using loopback address <span class="code-snippet">127.0.0.1</span>).</p>
+
+            <h2>Creating the Helpdesk Server (LAMP Stack)</h2>
+            <p>Next, I built an osTicket helpdesk server using Ubuntu Server. Because this VM needs to access the Internet, it required two network adapters: one NAT for internet access, and one tied to the AD-lab LAN segment. I then installed Apache, MariaDB, and PHP.</p>
+            
+            <p>To configure the database, I used MySQL:</p>
+            <span class="code-snippet">
+                CREATE DATABASE osticket_db;<br>
+                CREATE USER 'osticket_user'@'localhost' IDENTIFIED BY 'LabPassword123!';<br>
+                GRANT ALL PRIVILEGES ON osticket_db.* TO 'osticket_user'@'localhost';<br>
+                FLUSH PRIVILEGES;
+            </span>
+
+            <h2>Troubleshooting Apache and PHP Conflicts</h2>
+            <p>When attempting to reach the osTicket installer, I was greeted with raw PHP code. Apache on the newest version of Ubuntu uses a traffic-handing system called <span class="code-snippet">mpm_event</span> that isn’t compatible with the PHP translator. I had to swap Apache’s traffic handler to the older <span class="code-snippet">mpm_prefork</span>.</p>
+            
+            <span class="code-snippet">
+                sudo a2dismod mpm_event<br>
+                sudo a2enmod mpm_prefork<br>
+                sudo a2enmod php*
+            </span>
+            <p>After resolving this and securing the LDAP connection, I was able to successfully bridge the Linux Helpdesk environment with the Windows Active Directory domain to verify employee sign-ins.</p>
+        </div>
+    </div>
+</body>
+</html>
