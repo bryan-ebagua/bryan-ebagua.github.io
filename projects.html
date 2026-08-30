@@ -69,5 +69,31 @@
         </div>
         
         </div>
+        <div class="project-block">
+            <h2 class="project-title">
+                Azure Infrastructure as Code
+                <a href="https://github.com/bryan-ebagua/Azure-Terraform-IaC" class="github-link" target="_blank">GitHub Repo</a>
+            </h2>
+            <ul class="project-details">
+                <li>Architected and deployed a secure, modular cloud infrastructure in Azure using Terraform, separating compute and networking resources into highly reusable child modules.</li>
+                <li>Provisioned a custom Virtual Network (VNet) with public and private subnet segmentation, hosting an Ubuntu Linux Virtual Machine with a dynamically allocated Network Interface (NIC).</li>
+                <li>Engineered Network Security Group (NSG) rules to enforce strict inbound and outbound traffic controls, verifying firewall integrity by simulating traffic flows with Azure Network Watcher via the Azure CLI.</li>
+                <li>Troubleshot and bypassed Azure subscription capacity constraints by writing command-line queries (az vm list-skus) to dynamically identify regional data centers with available hardware inventory.</li>
+                <li>Orchestrated resource build orders and implicit dependencies by mapping dynamic state outputs, such as subnet IDs, as direct inputs across isolated Terraform modules.</li>
+            </ul>
+        </div>
+
+        <div class="project-block">
+            <h2 class="project-title">
+                Network Forensics & Malware Analysis Portfolio
+                <a href="https://github.com/bryan-ebagua/Malware-Traffic-Analysis" class="github-link" target="_blank">GitHub Repo</a>
+            </h2>
+            <ul class="project-details">
+                <li>Analyzed network packet captures (PCAPs) to investigate simulated malware infections, including tracing NetSupport Manager Remote Access Trojan (RAT) activity stemming from SIEM alerts.</li>
+                <li>Extracted critical Indicators of Compromise (IoCs) utilizing Wireshark to identify compromised host IP addresses, MAC addresses, hostnames, and associated active user accounts.</li>
+                <li>Traced complex infection chains from initial compromise vectors (such as DHCP and Kerberos logs) through payload delivery (HTTP/HTTPS) to accurately classify malware families.</li>
+                <li>Documented comprehensive incident reports detailing technical methodologies and network forensics findings to simulate dynamic Security Operations Center (SOC) workflows.</li>
+            </ul>
+        </div>
 </body>
 </html>
